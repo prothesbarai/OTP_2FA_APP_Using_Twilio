@@ -7,19 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.lang.reflect.Field;
 import java.util.Random;
+import java.util.Timer;
 
 public class HomeActivity extends AppCompatActivity {
     private String[] countryCode;
     private AutoCompleteTextView countryCodes;
     private TextInputEditText phnNumberField;
     private AppCompatButton sendOTPBtn;
-    private TextView showOTPField;
+    private LinearLayout hiddenLayout;
+    private TextView showOTPField,showOTPCounDownField;
+    private volatile String otp = "";
+    private long otpExpirationTime;
+    private Timer countdownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
         phnNumberField = findViewById(R.id.phnNumberField);
         sendOTPBtn = findViewById(R.id.sendOTPBtn);
         showOTPField = findViewById(R.id.showOTPField);
+        showOTPCounDownField = findViewById(R.id.showOTPCounDownField);
+        hiddenLayout = findViewById(R.id.hiddenLayout);
         countryCode = getResources().getStringArray(R.array.country_code);
 
         ArrayAdapter arrayAdapter = new ArrayAdapter<>(this,R.layout.country_code_items,R.id.countryCodeItems,countryCode);
@@ -43,7 +51,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(countryCodes.getText().length()>0 && phnNumberField.getText().length()>0){
                     int otpLength = 6;
-                    String otp = "";
                     // Get Input Field CC & Phn no
                     String getCC = countryCodes.getText().toString();
                     String getPhnNo = phnNumberField.getText().toString().trim();
@@ -54,11 +61,14 @@ public class HomeActivity extends AppCompatActivity {
                         otpBuilder.append(random.nextInt(10));
                     }
                     otp = otpBuilder.toString();
-                    showOTPField.setText(otp);
-                    showOTPField.setVisibility(View.VISIBLE);
+                    showOTPField.setText("OTP is : \t"+otp);
+                    hiddenLayout.setVisibility(View.VISIBLE);
                     // ================ Generate OTP End Here =======================
 
 
+                    //==================== OTP Stay Show Count Down Start Here =============================
+
+                    //==================== OTP Stay Show Count Down End Here ===============================
 
 
 
@@ -70,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
                         phnNumberField.setError(null);
                     }else{
                         phnNumberField.setError("Empty");
-                        showOTPField.setVisibility(View.GONE);
+                        hiddenLayout.setVisibility(View.GONE);
                     }
                 } else if (phnNumberField.getText().length()>0) {
                     phnNumberField.setError(null);
@@ -78,12 +88,12 @@ public class HomeActivity extends AppCompatActivity {
                         countryCodes.setError(null);
                     }else{
                         countryCodes.setError("Empty");
-                        showOTPField.setVisibility(View.GONE);
+                        hiddenLayout.setVisibility(View.GONE);
                     }
                 } else{
                     countryCodes.setError("Empty");
                     phnNumberField.setError("Empty");
-                    showOTPField.setVisibility(View.GONE);
+                    hiddenLayout.setVisibility(View.GONE);
                 }
             }
         });

@@ -86,17 +86,37 @@
         android:id="@+id/sendOTPBtn"
         />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/c5"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:id="@+id/showOTPField"
-        android:background="@drawable/bg_strock1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/hiddenLayout"
         android:visibility="gone"
-        />
+        android:background="@drawable/bg_strock1"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:textColor="@color/c5"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:id="@+id/showOTPField"
+            android:layout_marginRight="5dp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:textColor="@color/c5"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:id="@+id/showOTPCounDownField"
+            android:layout_marginLeft="5dp"
+            />
+    </LinearLayout>
 
 
 
