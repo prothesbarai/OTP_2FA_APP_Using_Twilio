@@ -118,6 +118,78 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="2"
+        android:layout_marginTop="20dp"
+        android:gravity="fill"
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/c5"
+            app:cursorColor="@color/c5"
+            app:hintTextColor="@color/c5"
+            app:boxStrokeErrorColor="@color/c4"
+            android:textColorHint="@color/c5"
+            app:counterTextColor="@color/c5"
+            app:errorTextColor="@color/c4"
+            app:cursorErrorColor="@color/c4"
+            app:counterEnabled="true"
+            app:counterMaxLength="6"
+            android:layout_weight="1"
+            app:boxStrokeWidth="2dp"
+            android:layout_marginRight="5dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Check OTP"
+                android:maxLength="6"
+                android:textColor="@color/c2"
+                android:id="@+id/checkOTPField"
+                android:inputType="number"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Check OTP"
+            android:textColor="@color/c5"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="23dp"
+            android:id="@+id/checkOTPBtn"
+            android:layout_marginLeft="5dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/hiddenCheck"
+        android:visibility="gone"
+        android:background="@drawable/bg_strock1"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:textColor="@color/c5"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:id="@+id/outputOTPField"
+            android:layout_marginRight="5dp"
+            />
+    </LinearLayout>
+
 
 
 

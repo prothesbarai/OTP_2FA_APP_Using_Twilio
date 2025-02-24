@@ -18,10 +18,10 @@ import java.util.Random;
 public class HomeActivity extends AppCompatActivity {
     private String[] countryCode;
     private AutoCompleteTextView countryCodes;
-    private TextInputEditText phnNumberField;
-    private AppCompatButton sendOTPBtn;
-    private LinearLayout hiddenLayout;
-    private TextView showOTPField,showOTPCounDownField;
+    private TextInputEditText phnNumberField,checkOTPField;
+    private AppCompatButton sendOTPBtn,checkOTPBtn;
+    private LinearLayout hiddenLayout,hiddenCheck;
+    private TextView showOTPField,showOTPCounDownField,outputOTPField;
     private volatile String otp = "";
     private CountDownTimer countDownTimer;
 
@@ -34,10 +34,14 @@ public class HomeActivity extends AppCompatActivity {
 
         countryCodes = findViewById(R.id.countryCodes);
         phnNumberField = findViewById(R.id.phnNumberField);
+        checkOTPField = findViewById(R.id.checkOTPField);
         sendOTPBtn = findViewById(R.id.sendOTPBtn);
+        checkOTPBtn = findViewById(R.id.checkOTPBtn);
         showOTPField = findViewById(R.id.showOTPField);
         showOTPCounDownField = findViewById(R.id.showOTPCounDownField);
         hiddenLayout = findViewById(R.id.hiddenLayout);
+        hiddenCheck = findViewById(R.id.hiddenCheck);
+        outputOTPField = findViewById(R.id.outputOTPField);
         countryCode = getResources().getStringArray(R.array.country_code);
 
         ArrayAdapter arrayAdapter = new ArrayAdapter<>(this,R.layout.country_code_items,R.id.countryCodeItems,countryCode);
@@ -62,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                     showOTPField.setText("OTP is : \t"+otp);
                     hiddenLayout.setVisibility(View.VISIBLE);
                     // ================ Generate OTP End Here =======================
-                    
+
                     //==================== OTP Stay Show Count Down Start Here =============================
                     if (countDownTimer != null){
                         countDownTimer.cancel();
