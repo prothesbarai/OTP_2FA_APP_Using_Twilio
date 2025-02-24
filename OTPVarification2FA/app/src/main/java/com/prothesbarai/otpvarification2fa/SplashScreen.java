@@ -52,6 +52,7 @@ public class SplashScreen extends AppCompatActivity {
     public void gotoHomePage(){
         Intent intent = new Intent(SplashScreen.this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

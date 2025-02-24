@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    android:padding="30dp"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/c5"
+        app:cursorColor="@color/c5"
+        app:hintTextColor="@color/c5"
+        app:boxStrokeErrorColor="@color/c4"
+        android:textColorHint="@color/c5"
+        app:counterTextColor="@color/c5"
+        app:errorTextColor="@color/c4"
+        app:cursorErrorColor="@color/c4"
+        app:counterEnabled="true"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Your Mobile Number"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
