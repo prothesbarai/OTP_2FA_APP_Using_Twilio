@@ -2,7 +2,6 @@ package com.prothesbarai.otpvarification2fa;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.transition.Visibility;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -74,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                     if (countDownTimer != null){
                         countDownTimer.cancel();
                     }
-                    countDownTimer = new CountDownTimer(6000,1000) { // 6 সেকেন্ডের কাউন্টডাউন, প্রতি 1s আপডেট
+                    countDownTimer = new CountDownTimer(60000,1000) { // 60 সেকেন্ডের কাউন্টডাউন, প্রতি 1s আপডেট
                         @Override
                         public void onTick(long millis) {
                             long seconds = millis / 1000;
@@ -129,7 +127,13 @@ public class HomeActivity extends AppCompatActivity {
                     checkOTPBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(HomeActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                            String getOtp = checkOTPField.getText().toString().trim();
+                            if (otp.equals(getOtp)){
+                                hiddenCheck.setVisibility(View.VISIBLE);
+                                outputOTPField.setText("OTP Mached ! Success");
+                            }else{
+                                outputOTPField.setText("Invalid OTP");
+                            }
                         }
                     });
                 }else{
