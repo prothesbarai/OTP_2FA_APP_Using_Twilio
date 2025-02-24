@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -12,9 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.lang.reflect.Field;
 import java.util.Random;
-import java.util.Timer;
 
 public class HomeActivity extends AppCompatActivity {
     private String[] countryCode;
@@ -24,8 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout hiddenLayout;
     private TextView showOTPField,showOTPCounDownField;
     private volatile String otp = "";
-    private long otpExpirationTime;
-    private Timer countdownTimer;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +62,28 @@ public class HomeActivity extends AppCompatActivity {
                     showOTPField.setText("OTP is : \t"+otp);
                     hiddenLayout.setVisibility(View.VISIBLE);
                     // ================ Generate OTP End Here =======================
-
-
+                    
                     //==================== OTP Stay Show Count Down Start Here =============================
-
+                    if (countDownTimer != null){
+                        countDownTimer.cancel();
+                    }
+                    countDownTimer = new CountDownTimer(6000,1000) { // 6 সেকেন্ডের কাউন্টডাউন, প্রতি 1s আপডেট
+                        @Override
+                        public void onTick(long millis) {
+                            long seconds = millis / 1000;
+                            showOTPCounDownField.setText(seconds+"s");
+                        }
+                        @Override
+                        public void onFinish() {
+                            otp = "";
+                            showOTPField.setText(null);
+                            showOTPCounDownField.setText(null);
+                            phnNumberField.setText(null);
+                            hiddenLayout.setVisibility(View.GONE);
+                        }
+                    };
+                    countDownTimer.start();
                     //==================== OTP Stay Show Count Down End Here ===============================
-
-
-
                     countryCodes.setError(null);
                     phnNumberField.setError(null);
                 } else if (countryCodes.getText().length()>0) {
