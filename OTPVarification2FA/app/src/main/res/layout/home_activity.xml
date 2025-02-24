@@ -69,6 +69,7 @@
                 android:maxLength="12"
                 android:textColor="@color/c2"
                 android:id="@+id/phnNumberField"
+                android:inputType="number"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,6 +84,18 @@
         android:layout_marginTop="10dp"
         android:paddingVertical="17dp"
         android:id="@+id/sendOTPBtn"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/c5"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:id="@+id/showOTPField"
+        android:background="@drawable/bg_strock1"
+        android:visibility="gone"
         />
 
 
