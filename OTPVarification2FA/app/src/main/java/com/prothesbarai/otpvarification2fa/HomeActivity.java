@@ -2,14 +2,17 @@ package com.prothesbarai.otpvarification2fa;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.transition.Visibility;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -115,5 +118,34 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+
+        // Check Button Start here ==============================================
+        hiddenLayout.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (hiddenLayout.getVisibility() == View.VISIBLE){
+                    checkOTPBtn.setEnabled(true);
+                    checkOTPBtn.setAlpha(1.0f);
+                    checkOTPBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(HomeActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    checkOTPBtn.setEnabled(false);
+                    checkOTPBtn.setAlpha(0.1f);
+                }
+                return true;
+            }
+        });
+
+
+
+
     }
+
+
+
+
 }
