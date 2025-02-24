@@ -33,11 +33,12 @@ public class SplashScreen extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                startProgress();
+                //startProgress();
                 gotoHomePage();
             }
         });
 
+        thread.start();
 
     }
 
@@ -49,7 +50,8 @@ public class SplashScreen extends AppCompatActivity {
         }
     }
     public void gotoHomePage(){
-        startActivity(new Intent(SplashScreen.this, HomeActivity.class));
+        Intent intent = new Intent(SplashScreen.this, HomeActivity.class);
+        startActivity(intent);
     }
 
 }

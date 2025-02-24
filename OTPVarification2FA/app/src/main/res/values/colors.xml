@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="c1">#dc233f</color>
+    <color name="c2">#273653</color>
+    <color name="c3">#fffbff</color>
+    <color name="c4">#fe4352</color>
+    <color name="c5">#9fb1c7</color>
+
+    <array name="funny_colors">
+        <item>@color/c1</item>
+        <item>@color/c2</item>
+        <item>@color/c3</item>
+        <item>@color/c4</item>
+        <item>@color/c5</item>
+    </array>
 </resources>
