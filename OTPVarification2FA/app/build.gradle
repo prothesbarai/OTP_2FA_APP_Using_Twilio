@@ -40,5 +40,6 @@ dependencies {
     implementation "com.airbnb.android:lottie:3.4.0"
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.github.Mursaat:AnimatedGradientTextView:v0.0.6'
+    implementation 'com.twilio:twilio:8.28.0'
 
 }

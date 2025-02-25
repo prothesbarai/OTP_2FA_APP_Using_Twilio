@@ -69,6 +69,9 @@ public class HomeActivity extends AppCompatActivity {
                     hiddenLayout.setVisibility(View.VISIBLE);
                     // ================ Generate OTP End Here =======================
 
+                    // Send Otp Your Phn Using Tiwilo...
+                    String phnNumbers = getCC+getPhnNo;
+
                     //==================== OTP Stay Show Count Down Start Here =============================
                     if (countDownTimer != null){
                         countDownTimer.cancel();
