@@ -1,4 +1,4 @@
-# OTP 2FA App Using Twilio 🔐📱
+# OTP 2FA App 🔐📱
 
 Welcome to the **OTP 2FA App Using Twilio**! This project demonstrates how to implement two-factor authentication (2FA) for your app using Twilio's powerful API. With this app, you can securely verify users through OTP (One-Time Password) sent via SMS.
 
