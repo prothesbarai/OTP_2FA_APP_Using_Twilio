@@ -21,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
     private AutoCompleteTextView countryCodes;
     private TextInputEditText phnNumberField,checkOTPField;
     private AppCompatButton sendOTPBtn,checkOTPBtn;
-    private LinearLayout hiddenLayout,hiddenCheck;
+    private LinearLayout hiddenLayout,hiddenCheck,checkerLayout;
     private TextView showOTPField,showOTPCounDownField,outputOTPField;
     private volatile String otp = "";
     private CountDownTimer countDownTimer;
@@ -42,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         showOTPCounDownField = findViewById(R.id.showOTPCounDownField);
         hiddenLayout = findViewById(R.id.hiddenLayout);
         hiddenCheck = findViewById(R.id.hiddenCheck);
+        checkerLayout = findViewById(R.id.checkerLayout);
         outputOTPField = findViewById(R.id.outputOTPField);
         countryCode = getResources().getStringArray(R.array.country_code);
 
@@ -85,6 +86,7 @@ public class HomeActivity extends AppCompatActivity {
                             showOTPCounDownField.setText(null);
                             phnNumberField.setText(null);
                             hiddenLayout.setVisibility(View.GONE);
+                            outputOTPField.setVisibility(View.GONE);
                         }
                     };
                     countDownTimer.start();
@@ -118,31 +120,44 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // Check Button Start here ==============================================
-        hiddenLayout.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+        hiddenLayout.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() { // When Visibility Based On Condition Enable and Disable
             @Override
             public boolean onPreDraw() {
                 if (hiddenLayout.getVisibility() == View.VISIBLE){
-                    checkOTPBtn.setEnabled(true);
-                    checkOTPBtn.setAlpha(1.0f);
-                    checkOTPBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            String getOtp = checkOTPField.getText().toString().trim();
-                            if (otp.equals(getOtp)){
-                                hiddenCheck.setVisibility(View.VISIBLE);
-                                outputOTPField.setText("OTP Mached ! Success");
-                            }else{
-                                outputOTPField.setText("Invalid OTP");
+                    checkerLayout.setVisibility(View.VISIBLE);
+                    String getOTP = checkOTPField.getText().toString();
+                    if (!getOTP.isEmpty()){
+                        checkOTPBtn.setEnabled(true);
+                        checkOTPBtn.setAlpha(1.0f);
+                        checkOTPBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (checkOTPBtn.isEnabled()){
+                                    hiddenCheck.setVisibility(View.VISIBLE);
+                                    if(otp.equals(getOTP)){
+                                        outputOTPField.setVisibility(View.VISIBLE);
+                                        outputOTPField.setText("OTP Mached ! Success");
+                                    }else{
+                                        outputOTPField.setVisibility(View.VISIBLE);
+                                        outputOTPField.setText("Invalid OTP");
+                                    }
+                                }else{
+                                    hiddenCheck.setVisibility(View.GONE);
+                                }
                             }
-                        }
-                    });
+                        });
+                    }else{
+                        checkOTPBtn.setEnabled(false);
+                        checkOTPBtn.setAlpha(0.1f);
+                        hiddenCheck.setVisibility(View.GONE);
+                    }
                 }else{
-                    checkOTPBtn.setEnabled(false);
-                    checkOTPBtn.setAlpha(0.1f);
+                    checkerLayout.setVisibility(View.GONE);
                 }
                 return true;
             }
         });
+
 
 
 

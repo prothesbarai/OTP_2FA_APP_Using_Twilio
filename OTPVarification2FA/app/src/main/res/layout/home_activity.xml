@@ -126,6 +126,8 @@
         android:weightSum="2"
         android:layout_marginTop="20dp"
         android:gravity="fill"
+        android:visibility="gone"
+        android:id="@+id/checkerLayout"
         >
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
