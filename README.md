@@ -42,33 +42,30 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-public class OTPSender {
+// Twilio Account SID এবং Auth Token এখানে যোগ করুন
+public static final String ACCOUNT_SID = "আপনার_TWILIO_ACCOUNT_SID";
+public static final String AUTH_TOKEN = "আপনার_TWILIO_AUTH_TOKEN";
 
-    // Twilio Account SID এবং Auth Token এখানে যোগ করুন
-    public static final String ACCOUNT_SID = "আপনার_TWILIO_ACCOUNT_SID";
-    public static final String AUTH_TOKEN = "আপনার_TWILIO_AUTH_TOKEN";
+public static void sendOTPToMobile(String mobileNumber, String otp) {
+   try {
+      // Twilio এর জন্য সেটআপ
+      Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-    public static void sendOTPToMobile(String mobileNumber, String otp) {
-        try {
-            // Twilio এর জন্য সেটআপ
-            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+      // OTP বার্তা তৈরি
+      String message = "আপনার OTP হল: " + otp;
 
-            // OTP বার্তা তৈরি
-            String message = "আপনার OTP হল: " + otp;
+      // SMS পাঠানোর জন্য Twilio API ব্যবহার করা
+      Message sms = Message.creator(
+         new PhoneNumber(mobileNumber), // প্রাপকের ফোন নম্বর
+            new PhoneNumber("আপনার_TWILIO_PHONE_NUMBER"), // আপনার Twilio ফোন নম্বর
+            message // বার্তা
+         ).create();
 
-            // SMS পাঠানোর জন্য Twilio API ব্যবহার করা
-            Message sms = Message.creator(
-                    new PhoneNumber(mobileNumber), // প্রাপকের ফোন নম্বর
-                    new PhoneNumber("আপনার_TWILIO_PHONE_NUMBER"), // আপনার Twilio ফোন নম্বর
-                    message // বার্তা
-            ).create();
-
-            // সফল হলে বার্তা প্রদর্শন
-            JOptionPane.showMessageDialog(null, "OTP সফলভাবে পাঠানো হয়েছে!", "সফলতা", JOptionPane.INFORMATION_MESSAGE);
+      // সফল হলে বার্তা প্রদর্শন
+      JOptionPane.showMessageDialog(null, "OTP সফলভাবে পাঠানো হয়েছে!", "সফলতা", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "OTP পাঠানোর সময় সমস্যা হয়েছে!", "ত্রুটি", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+   }
 }
 ```
 

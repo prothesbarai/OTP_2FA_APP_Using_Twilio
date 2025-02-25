@@ -25,6 +25,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView showOTPField,showOTPCounDownField,outputOTPField;
     private volatile String otp = "";
     private CountDownTimer countDownTimer;
+    public static final String ACCOUNT_SID = "";
+    public static final String AUTH_TOKEN = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
                     // Send Otp Your Phn Using Tiwilo...
                     String phnNumbers = getCC+getPhnNo;
 
+
                     //==================== OTP Stay Show Count Down Start Here =============================
                     if (countDownTimer != null){
                         countDownTimer.cancel();
@@ -93,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     };
                     countDownTimer.start();
+                    
                     //==================== OTP Stay Show Count Down End Here ===============================
                     countryCodes.setError(null);
                     phnNumberField.setError(null);
