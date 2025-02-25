@@ -24,15 +24,6 @@ Welcome to the **OTP 2FA App Using Twilio**! This project demonstrates how to im
 git clone https://github.com/prothesbarai/OTP_2FA_APP_Using_Twilio.git
 ```
 
-## Configure Twilio:
-
-Open the project and navigate to app/src/main/java/com/yourpackage/MainActivity.java.
-Replace the placeholders for TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and your Twilio phone number in the code.
-Build and Run:
-
-Build the project by clicking on Build > Make Project.
-Run the app on your emulator or connected Android device.
-
 ## 🧑‍💻 Contributing
 We welcome contributions! If you'd like to improve or add new features, please follow these steps:
 
