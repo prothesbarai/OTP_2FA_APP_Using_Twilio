@@ -11,9 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-
 import java.util.Random;
 
 public class HomeActivity extends AppCompatActivity {
@@ -25,8 +25,6 @@ public class HomeActivity extends AppCompatActivity {
     private TextView showOTPField,showOTPCounDownField,outputOTPField;
     private volatile String otp = "";
     private CountDownTimer countDownTimer;
-    public static final String ACCOUNT_SID = "";
-    public static final String AUTH_TOKEN = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
                 if(countryCodes.getText().length()>0 && phnNumberField.getText().length()>0){
                     int otpLength = 6;
                     // Get Input Field CC & Phn no
-                    String getCC = countryCodes.getText().toString();
+                    String getCC = countryCodes.getText().toString().trim();
                     String getPhnNo = phnNumberField.getText().toString().trim();
                     // ================ Generate OTP Start Here =====================
                     Random random = new Random();
@@ -73,7 +71,6 @@ public class HomeActivity extends AppCompatActivity {
 
                     // Send Otp Your Phn Using Tiwilo...
                     String phnNumbers = getCC+getPhnNo;
-
 
                     //==================== OTP Stay Show Count Down Start Here =============================
                     if (countDownTimer != null){
@@ -96,10 +93,10 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     };
                     countDownTimer.start();
-                    
                     //==================== OTP Stay Show Count Down End Here ===============================
                     countryCodes.setError(null);
                     phnNumberField.setError(null);
+                    Toast.makeText(HomeActivity.this, ""+phnNumbers, Toast.LENGTH_SHORT).show();
                 } else if (countryCodes.getText().length()>0) {
                     countryCodes.setError(null);
                     if (phnNumberField.getText().length()>0){
@@ -167,11 +164,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
-
     }
-
-
-
 
 }
